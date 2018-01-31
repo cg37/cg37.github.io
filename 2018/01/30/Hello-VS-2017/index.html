@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  
+  <meta name="keywords" content="Here Craig Write">
+  <meta name="description" content="陈港写字的地方">
+  
+  <title>Hexo</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/materialize.min.css">
+    
+      <link rel="stylesheet" href="/css/main.min.css">
+    
+  
+  <style type="text/css">
+      html{
+          font-family: sans-serif;
+          font-weight: 300;
+      }
+      @font-face {
+          font-family: 'Material Icons';
+          font-style: normal;
+          font-weight: 400;
+          src: url(/fonts/MaterialIcons-Regular.eot);
+          src: url(/fonts/MaterialIcons-Regular.woff2) format('woff2'),
+          url(/fonts/MaterialIcons-Regular.woff) format('woff'),
+          url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
+      }
+  </style>
+<link rel="shortcut icon" href="/source/favicon.ico">
+</head>
+<body>
+<div id="menu-box"><a href="javascript:void(0)" id="menu" data-activates="slide-out" class="button-collapse menu" ><span class="nav-btn"></span></a></div>
+<div id="menu-outer">
+  <div id="menu-inner">
+      <ul id="slide-out" class="side-nav" >
+    <div class="nav-header"  style="background-image: url(/images/header-bg.png);background-color:#26A69A">
+    <div class="header-box"><img src="/images/header.png" ondragstart="return false;"></div>
+    <p>Craig Chan</p>
+    <div class="nav-link">
+        
+        <a href="http://example.com" target="_blank"> <div class="link-box twitter"></div></a>
+        
+        
+        <a  href="http://example.com" target="_blank"><div class="link-box github"></div></a>
+        
+        
+        <a href="mailto:http://example.com"><div class="link-box email"></div></a>
+        
+        
+        <a href="http://example.com" target="_blank"><div class="link-box weibo"></div></a>
+        
+        
+        <a href="http://example.com" target="_blank"> <div class="link-box zhihu"></div></a>
+        
+    </div>
+    <div class="nav-search">
+        <form id="search-form"> <!-- 搜索框相关 -->
+            <input type="text" id="local-search-input" name="q" results="0" placeholder="搜索..." class="search form-control" autocomplete="off" autocorrect="off"/>
+            <div class="nav-search-img"><i class="material-icons">search</i></div>
+        </form>
+        <div id="local-search-result"></div> <!-- 搜索结果区 -->
+        <p class='no-result'>无搜索结果</p>
+    </div>
+</div>
+    <!--Homepage-->
+
+<li class="nav-list">
+    <a href="/" target="_self">
+        <div class="nav-ico"><i class="material-icons">home</i> </div><p>主页</p>
+    </a>
+</li>
+
+<!--archives-->
+
+<li class="nav-list dropdown-btn">
+    <a  class=""  target="_self">
+        <div class="nav-ico"><i class="material-icons">assignment</i></div><p>归档</p><div class="dropdown-ico"><i class="material-icons">arrow_drop_down</i></div>
+    </a>
+</li>
+
+<ul class="dropdown-menu dropdown" >
+    <li class="nav-dropdown-list">
+        <a class="archive-link" href="/archives/2018/01/">January 2018<span class="archive-count">2</span></a>
+    </li>
+</ul>
+<!--categories-->
+
+<ul class="dropdown-menu dropdown" >
+    <li class="nav-dropdown-list">
+        
+    </li>
+</ul>
+<!--tags-->
+
+<li class="nav-list">
+    <a href="/archives" target="_self">
+        <div class="nav-ico"><i class="material-icons">bookmark</i> </div><p>标签</p>
+    </a>
+</li>
+
+<!--photo-->
+
+<!--friends-->
+
+<!--about-->
+
+
+</ul>
+
+  </div>
+</div>
+
+<div id="content-outer">
+  <div id="content-inner">
+    
+<article id="post">
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-7.png)" >
+  <h2></h2>
+    
+  <p>作者:Craig Chan &nbsp&nbsp 发布于:<time datetime="2018-01-30T10:45:36.047Z">
+          2018-01-30
+    </time>
+  </p>
+    
+  </div>
+  <div class="post-page-content">
+  <h1 id="如何在-VS-2017-中输出-“Hello-World”"><a href="#如何在-VS-2017-中输出-“Hello-World”" class="headerlink" title="如何在 VS 2017 中输出 “Hello World”"></a>如何在 VS 2017 中输出 “Hello World”</h1><p>##1.下载安装 VS2017<br>根据自己的需求下载 <a href="https://www.visualstudio.com/zh-hans/?rr=https%3A%2F%2Fwww.baidu.com%2Flink%3Furl%3DnhXYuxOUqhnYk6qG9TznWDLLPEqFQLfy6dCzW7fn44e9K_7SiP4wXhXBh4SSook4%26wd%3D%26eqid%3Ddc4eeda300001a94000000065a6f0dc2" target="_blank" rel="noopener">Visual Studio</a></p>
+<p>安装过程略</p>
+<p>##2.创建文件</p>
+<p>###创建项目文件<br>选择<strong>文件</strong>-&gt;<strong>新建</strong>-&gt;<strong>项目</strong>创建项目<br><img src="/2018/01/30/Hello-VS-2017/vs_1.png" alt=""></p>
+<p>右侧<strong>已安装</strong>下选择<strong>Visual C++</strong>,<strong>常规</strong>,选择<strong>空项目</strong><br><img src="/2018/01/30/Hello-VS-2017/vs_2.png" alt=""><br>项目<strong>名称</strong>和<strong>位置</strong>可以自定义，点击<strong>确定</strong>。</p>
+<p><img src="/2018/01/30/Hello-VS-2017/vs_3.png" alt=""><br>在菜单栏选择<strong>视图</strong>窗口，打开<strong>解决方案资源管理器</strong></p>
+<p>###设置项目属性<br>在 Visual Studio 中选择<strong>项目</strong>菜单栏，选择最后一项<strong>属性</strong>，或者直接右击左侧<strong>解决方案资源管理器</strong>中的<strong>Project1</strong>，选择最后一项<strong>属性</strong>，<br>弹出下图所示的对话框<br><img src="/2018/01/30/Hello-VS-2017/vs_6.png" alt=""><br>左侧选择<strong>配置属性</strong>-&gt;<strong>链接器</strong>-&gt;<strong>系统</strong>，右侧选择<strong>子系统</strong>，下拉菜单中选择<strong>控制台(/SUBSYSTEM:CONSOLE)</strong>,点击<strong>确定</strong>完成。</p>
+<p>###创建源文件<br>回到Visual Studio<br><img src="/2018/01/30/Hello-VS-2017/vs_4.png" alt=""><br>在右侧<strong>解决方案资源管理器</strong>中，右键<strong>源文件</strong>-&gt;<strong>添加</strong>-&gt;<strong>新建</strong></p>
+<p><img src="/2018/01/30/Hello-VS-2017/vs_5.png" alt=""><br>在弹出的窗口中右侧选择<strong>Visual C++</strong> -&gt; <strong>C++文件(.cpp)</strong>,建议讲文件名称改为<em>HelloWorld.cpp</em>,位置为默认位置。单击<strong>确定</strong>                   </p>
+<p>##3.输入代码<br>在下图所示的窗口中输入代码<br><img src="/2018/01/30/Hello-VS-2017/vs_7.png" alt=""></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Hello World"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"Hello World"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>##4.编译并运行<br>在 Visual Studio 的菜单栏中选择<strong>生成</strong>-&gt;<strong>生成解决方案</strong><br><img src="/2018/01/30/Hello-VS-2017/vs_9.png" alt=""></p>
+<p>下图<strong>输出</strong>窗口中应表明没有错误，否则检查代码是否有误。<br><img src="/2018/01/30/Hello-VS-2017/vs_10.png" alt=""></p>
+<p>确认代码无误后，菜单栏中选择<strong>调试</strong>-&gt;<strong>开始执行(不调试)</strong>,或者按下<strong>Ctrl</strong>+<strong>F5</strong>。<br><img src="/2018/01/30/Hello-VS-2017/vs_11.png" alt=""></p>
+<p>弹出下图所示窗口，表明输出成功，其中第一行是用 <strong>Static静态成员函数</strong> 输出 “<strong>Hello World</strong>“,下一行是用 <strong>iostream标准输入输出流</strong> 中的 <strong>COUT</strong> 输出<br><img src="/2018/01/30/Hello-VS-2017/vs_12.png" alt=""></p>
+
+  </div>
+  <!--评论块-->
+    
+
+</article>
+<nav class="post-nav">
+  <!-- Prev Nav -->
+    
+  <a href="/2018/01/30/Hello-VS2107-带图片/" id="post_nav-newer" class="post-nav-content prev-content">
+      新篇
+  </a>
+    
+
+
+  <!-- Next Nav -->
+    
+</nav>
+<div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
+<div class="post-toc-none"><p>(无)</p></div>
+<div class="post-toc-box">
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#如何在-VS-2017-中输出-“Hello-World”"><span class="post-toc-number">1.</span> <span class="post-toc-text">如何在 VS 2017 中输出 “Hello World”</span></a></li></ol>
+</div>
+<!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
+<script type="text/javascript">
+    menu();
+</script>
+  </div>
+</div>
+<div id="bottom-outer">
+  <div id="bottom-inner">
+    <a  id="top-button" onfocus="this.blur();"><div class="up upinbody" style="background-color:#26A69A"><i class="material-icons material-up">vertical_align_top</i></div></a>
+
+
+<p style="line-height: 45px">Copyright ©  2017  Hexo</p>
+<p style="line-height: 45px">Powered by <a href="https://hexo.io/" target="_blank"> Hexo </a> && Theme - <a href="https://github.com/moumao/hexo-theme-Vateral" target="_blank">Vateral</a></p>
+
+  </div>
+</div>
+
+<!--影集界面需要的资源-->
+
+
+
+<!-- scripts list from theme config.yml -->
+
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+<script src="/js/materialize.min.js"></script>
+
+<script src="/js/main.min.js"></script>
+
+
+<script>
+    NProgress.start();
+    NProgress.done();
+    lazy();
+    links();
+    window.onpopstate = menu();
+    //pjax操作
+    $(document).pjax('a:not(.nopjax)', '#content-inner', {fragment:'#content-inner', timeout:8000});
+    $(document).on('pjax:start', NProgress.start).on('pjax:end', NProgress.done)
+        .on('pjax:end', () => {
+            dowmdiv();
+            lazy();
+            toc();
+            links();
+            menu();
+        });
+</script>
+
+</body>
+</html>
