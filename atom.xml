@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-02-03T12:15:01.174Z</updated>
+  <updated>2018-02-15T13:17:01.408Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,22 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>写于新年之际</title>
+    <link href="http://yoursite.com/2018/02/15/%E5%86%99%E4%BA%8E%E6%96%B0%E5%B9%B4%E4%B9%8B%E9%99%85/"/>
+    <id>http://yoursite.com/2018/02/15/写于新年之际/</id>
+    <published>2018-02-15T13:14:56.000Z</published>
+    <updated>2018-02-15T13:17:01.408Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="生活，" scheme="http://yoursite.com/tags/%E7%94%9F%E6%B4%BB%EF%BC%8C/"/>
+    
+  </entry>
   
   <entry>
     <title>Hexo 配置中遇到的问题</title>
