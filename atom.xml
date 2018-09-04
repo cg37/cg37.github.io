@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-04-16T15:14:35.779Z</updated>
+  <updated>2018-09-04T08:27:45.423Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,23 +17,25 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>怀孕应急预案</title>
-    <link href="http://yoursite.com/2018/04/16/%E6%80%80%E5%AD%95%E5%BA%94%E6%80%A5%E9%A2%84%E6%A1%88/"/>
-    <id>http://yoursite.com/2018/04/16/怀孕应急预案/</id>
-    <published>2018-04-16T13:07:51.000Z</published>
-    <updated>2018-04-16T15:14:35.779Z</updated>
+    <title>前端学习札记_2</title>
+    <link href="http://yoursite.com/2018/06/23/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E6%9C%AD%E8%AE%B0-2/"/>
+    <id>http://yoursite.com/2018/06/23/前端学习札记-2/</id>
+    <published>2018-06-23T13:14:56.000Z</published>
+    <updated>2018-09-04T08:27:45.423Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="怀孕应急预案"><a href="#怀孕应急预案" class="headerlink" title="怀孕应急预案"></a>怀孕应急预案</h1><p>最快，在24.1.19，我当爸爸。最快两个月内确认是否怀孕，跟家里通报过后，我六月底去云南，见你父母，提前做一些工作。我认错态度要诚恳，但是新生命的诞生不应该被称为一个错误。需要提前做一下我哥我父母的工作，对我大不了一顿毒打。</p><p>学业上，你后半年就需要在云南养胎了，</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="React-父子组件传值、input，onChange-中的问题"><a href="#React-父子组件传值、input，onChange-中的问题" class="headerlink" title="React 父子组件传值、input，onChange 中的问题"></a>React 父子组件传值、input，onChange 中的问题</h1><p>先看最简单React 父子组件传值</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ChildCom</span> <span class="keyword">extends</span> <span class="title">Component</span></span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(props)&#123;</span><br><span class="line">        <span class="keyword">super</span>(props);</span><br><span class="line">        <span class="keyword">this</span>.state=&#123;</span><br><span class="line">            state_1:<span class="string">'name'</span>,</span><br><span class="line">            state_2:<span class="string">'gender'</span>,</span><br><span class="line">            state_3:<span class="string">'age'</span>,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">render()&#123;</span><br><span class="line">    <span class="keyword">return</span>(</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &#123;<span class="keyword">this</span>.props.Student&#125;</span><br><span class="line">        &lt;br/&gt;</span><br><span class="line">        &lt;input  value=&#123;<span class="keyword">this</span>.state.state_1&#125; /&gt;</span><br><span class="line">        &lt;br/&gt;</span><br><span class="line">        &lt;input  value=&#123;<span class="keyword">this</span>.state.state_2&#125; /&gt;</span><br><span class="line">        &lt;br/&gt;</span><br><span class="line">        &lt;input  value=&#123;<span class="keyword">this</span>.state.state_3&#125; /&gt;</span><br><span class="line">        &lt;br/&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    )&#125;    </span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">class ParentCom extends Component&#123;</span></span><br><span class="line"><span class="regexp">    constructor(props)&#123;</span></span><br><span class="line"><span class="regexp">        super(props);</span></span><br><span class="line"><span class="regexp">        this.state=&#123;</span></span><br><span class="line"><span class="regexp">            info_1:'Head',</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">    render()&#123;</span></span><br><span class="line"><span class="regexp">        return(</span></span><br><span class="line"><span class="regexp">            &lt;div&gt;</span></span><br><span class="line"><span class="regexp">                &lt;ChildCom</span></span><br><span class="line"><span class="regexp">                        Student=&#123;this.state.info_1&#125; </span></span><br><span class="line"><span class="regexp">                        getinfo=&#123;this.getinfo&#125; /</span>&gt;</span><br><span class="line">                &lt;button onClick=&#123;<span class="keyword">this</span>.handleSubmit&#125;&gt;submit&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>div&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> ParentCom</span><br></pre></td></tr></table></figure><p>上面是最简单的</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;怀孕应急预案&quot;&gt;&lt;a href=&quot;#怀孕应急预案&quot; class=&quot;headerlink&quot; title=&quot;怀孕应急预案&quot;&gt;&lt;/a&gt;怀孕应急预案&lt;/h1&gt;&lt;p&gt;最快，在24.1.19，我当爸爸。最快两个月内确认是否怀孕，跟家里通报过后，我六月底去云南，见你父母，提前做
+        &lt;h1 id=&quot;React-父子组件传值、input，onChange-中的问题&quot;&gt;&lt;a href=&quot;#React-父子组件传值、input，onChange-中的问题&quot; class=&quot;headerlink&quot; title=&quot;React 父子组件传值、input，onChange 
       
     
     </summary>
     
+    
+      <category term="前端，React，表单，JS" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF%EF%BC%8CReact%EF%BC%8C%E8%A1%A8%E5%8D%95%EF%BC%8CJS/"/>
     
   </entry>
   
@@ -42,7 +44,7 @@
     <link href="http://yoursite.com/2018/03/24/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E6%9C%AD%E8%AE%B0-1/"/>
     <id>http://yoursite.com/2018/03/24/前端学习札记-1/</id>
     <published>2018-03-24T11:29:07.000Z</published>
-    <updated>2018-03-24T11:34:32.993Z</updated>
+    <updated>2018-09-04T08:28:07.006Z</updated>
     
     <content type="html"><![CDATA[<h1 id="前端学习ENV-配置"><a href="#前端学习ENV-配置" class="headerlink" title="前端学习ENV 配置"></a>前端学习ENV 配置</h1><p>安装 Node.js</p><p>安装 npm</p>]]></content>
     
@@ -64,9 +66,9 @@
     
       <category term="软件安装" scheme="http://yoursite.com/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/"/>
     
-      <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
-    
       <category term="入门基础" scheme="http://yoursite.com/tags/%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
     
   </entry>
   

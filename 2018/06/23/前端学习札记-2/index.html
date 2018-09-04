@@ -16,18 +16,20 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>Archive | 37号博客</title>
-  <meta name="description" content="Student">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Where Craig Write">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <title>前端学习札记_2 | 37号博客</title>
+  <meta name="description" content="React 父子组件传值、input，onChange 中的问题先看最简单React 父子组件传值 1234567891011121314151617181920212223242526272829303132333435363738394041424344import React, &amp;#123; Component &amp;#125; from &apos;react&apos;class ChildCom extend">
+<meta name="keywords" content="前端，React，表单，JS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端学习札记_2">
+<meta property="og:url" content="http://yoursite.com/2018/06/23/前端学习札记-2/index.html">
 <meta property="og:site_name" content="Where Craig Write">
-<meta property="og:description" content="Student">
+<meta property="og:description" content="React 父子组件传值、input，onChange 中的问题先看最简单React 父子组件传值 1234567891011121314151617181920212223242526272829303132333435363738394041424344import React, &amp;#123; Component &amp;#125; from &apos;react&apos;class ChildCom extend">
+<meta property="og:updated_time" content="2018-09-04T08:27:45.423Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Where Craig Write">
-<meta name="twitter:description" content="Student">
+<meta name="twitter:title" content="前端学习札记_2">
+<meta name="twitter:description" content="React 父子组件传值、input，onChange 中的问题先看最简单React 父子组件传值 1234567891011121314151617181920212223242526272829303132333435363738394041424344import React, &amp;#123; Component &amp;#125; from &apos;react&apos;class ChildCom extend">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://yoursite.com/archives/index.html">
+  <link rel="canonical" href="http://yoursite.com/2018/06/23/前端学习札记-2/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Where Craig Write" type="application/atom+xml">
   
@@ -308,88 +310,138 @@
   
   
 <main class="main" role="main">
-  	<article class="content article article-archives article-type-list" itemscope="">
-	    <header class="article-header">
-	      <h1 itemprop="title">Archive</h1>
-	      <p class="text-muted">Total 5 articles</p>
-	    </header>
-	    <div class="article-body">
-	      
+  <div class="content">
+  <article id="post-前端学习札记-2" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
   
+    <h1 class="article-title" itemprop="name">
+      前端学习札记_2
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2018/06/23/前端学习札记-2/" class="article-date">
+	  <time datetime="2018-06-23T13:14:56.000Z" itemprop="datePublished">2018-06-23</time>
+	</a>
+</span>
+        
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/前端，React，表单，JS/">前端，React，表单，JS</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/06/23/前端学习札记-2/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+        <h1 id="React-父子组件传值、input，onChange-中的问题"><a href="#React-父子组件传值、input，onChange-中的问题" class="headerlink" title="React 父子组件传值、input，onChange 中的问题"></a>React 父子组件传值、input，onChange 中的问题</h1><p>先看最简单React 父子组件传值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ChildCom</span> <span class="keyword">extends</span> <span class="title">Component</span></span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(props)&#123;</span><br><span class="line">        <span class="keyword">super</span>(props);</span><br><span class="line">        <span class="keyword">this</span>.state=&#123;</span><br><span class="line">            state_1:<span class="string">'name'</span>,</span><br><span class="line">            state_2:<span class="string">'gender'</span>,</span><br><span class="line">            state_3:<span class="string">'age'</span>,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">render()&#123;</span><br><span class="line">    <span class="keyword">return</span>(</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &#123;<span class="keyword">this</span>.props.Student&#125;</span><br><span class="line">        &lt;br/&gt;</span><br><span class="line">        &lt;input  value=&#123;<span class="keyword">this</span>.state.state_1&#125; /&gt;</span><br><span class="line">        &lt;br/&gt;</span><br><span class="line">        &lt;input  value=&#123;<span class="keyword">this</span>.state.state_2&#125; /&gt;</span><br><span class="line">        &lt;br/&gt;</span><br><span class="line">        &lt;input  value=&#123;<span class="keyword">this</span>.state.state_3&#125; /&gt;</span><br><span class="line">        &lt;br/&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    )&#125;    </span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">class ParentCom extends Component&#123;</span></span><br><span class="line"><span class="regexp">    constructor(props)&#123;</span></span><br><span class="line"><span class="regexp">        super(props);</span></span><br><span class="line"><span class="regexp">        this.state=&#123;</span></span><br><span class="line"><span class="regexp">            info_1:'Head',</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">    render()&#123;</span></span><br><span class="line"><span class="regexp">        return(</span></span><br><span class="line"><span class="regexp">            &lt;div&gt;</span></span><br><span class="line"><span class="regexp">                &lt;ChildCom</span></span><br><span class="line"><span class="regexp">                        Student=&#123;this.state.info_1&#125; </span></span><br><span class="line"><span class="regexp">                        getinfo=&#123;this.getinfo&#125; /</span>&gt;</span><br><span class="line">                &lt;button onClick=&#123;<span class="keyword">this</span>.handleSubmit&#125;&gt;submit&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>div&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> ParentCom</span><br></pre></td></tr></table></figure>
+<p>上面是最简单的</p>
+
+      
+    </div>
+    <div class="article-footer">
+      
+    </div>
+  </article>
   
     
+  <section id="comments">
+  	
+       
+    <div id="uyan_frame"></div>
+
     
-      
-      
-      <section class="panel panel-default b-no">
-        <div class="panel-heading" role="tab">
-          <h3 class="panel-title">
-            <a data-toggle="collapse" href="#collapse2018" aria-expanded="true">
-              <i class="icon icon-calendar-plus text-active"></i><i class="icon icon-calendar-minus text"></i>
-              2018
-            </a>
-            <!-- <a href="/archives/2018" class="archive-year">2018</a> -->
-          </h3>
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2018/03/24/前端学习札记-1/" title="前端学习札记_1">Older&nbsp;&nbsp;<i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning hidden-xs" data-toggle="modal" data-target="#donateModal"><span>$</span></button>
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-tit">
+            <p>Thank you for your support, I will continue to work hard!</p>
+          </div>
+          <div class="donate-payimg">
+            <img src="/images/donate/alipayimg.png" alt="Scan Qrcode" title="Scan" />
+          </div>
+          <p class="text-muted mv">Scan this qrcode</p>
+          <div class="donate-payselect">
+            <div class="pay_item checked" data-id="alipay" data-src="/images/donate/alipayimg.png">
+              <div class="radio">
+                <input type="radio" name="payment" id="input-alipay" value="alipay" checked>
+                <label class="pay_logo clickable" for="input-alipay"><img src="/images/donate/alipay.jpg" alt="alipay" /></label>
+              </div>
+            </div>
+            <div class="pay_item" data-id="weipay" data-src="/images/donate/weipayimg.png">
+              <div class="radio">
+                <input type="radio" name="payment" id="input-weipay" value="weipay">
+                <label class="pay_logo clickable" for="input-weipay"><img src="/images/donate/weipay.jpg" alt="weipay" /></label>
+              </div>
+            </div>
+          </div>
+          <div class="text-grey">
+            <p>Scan this qrcode, you can sweep yards reward oh!</p>
+          </div>
         </div>
-        <div id="collapse2018" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading2018">
-        <div class="panel-body">
-          <div class="collection">
-    
-    
-<a href="/2018/06/23/前端学习札记-2/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2018-06-23T13:14:56.000Z" itemprop="datePublished">2018-06-23</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> 前端学习札记_2
-</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 
-  
-    
-    
-    
-<a href="/2018/03/24/前端学习札记-1/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2018-03-24T11:29:07.000Z" itemprop="datePublished">2018-03-24</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> 前端学习札记_1
-</a>
 
-
-  
-    
-    
-    
-<a href="/2018/02/15/写于新年之际/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2018-02-15T13:14:56.000Z" itemprop="datePublished">2018-02-15</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> 写于新年之际
-</a>
-
-
-  
-    
-    
-    
-<a href="/2018/02/02/Hexo-配置中遇到的问题/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2018-02-02T01:41:51.000Z" itemprop="datePublished">2018-02-02</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> Hexo 配置中遇到的问题
-</a>
-
-
-  
-    
-    
-    
-<a href="/2018/01/29/Hello-VS-2017/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2018-01-28T19:37:37.000Z" itemprop="datePublished">2018-01-29</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> VS 2017 &amp; Hello World
-</a>
-
-
-  
-  
-    </div></div></div></section>
-  
-
-	    </div>
-  	</article>
-  	 	
 </main>
 
   <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
@@ -446,6 +498,12 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
     
+    
+        
+    
+    <script defer type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=[object Object]"></script>
+
+
     
     
 
