@@ -25,7 +25,8 @@
 <meta property="og:site_name" content="Where Craig Write">
 <meta property="og:description" content="React 父子组件传值、input，onChange 中的问题1.先看最简单React 父子组件传值123456789101112131415161718192021222324252627282930313233343536373839404142import React, &amp;#123; Component &amp;#125; from &apos;react&apos;class ChildCom extends C">
 <meta property="og:image" content="http://yoursite.com/2018/06/23/前端学习札记-2/pic_1.png">
-<meta property="og:updated_time" content="2018-09-05T09:06:20.108Z">
+<meta property="og:image" content="http://yoursite.com/2018/06/23/前端学习札记-2/pic_2.gif">
+<meta property="og:updated_time" content="2018-09-05T09:45:38.527Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端学习札记_2">
 <meta name="twitter:description" content="React 父子组件传值、input，onChange 中的问题1.先看最简单React 父子组件传值123456789101112131415161718192021222324252627282930313233343536373839404142import React, &amp;#123; Component &amp;#125; from &apos;react&apos;class ChildCom extends C">
@@ -362,8 +363,9 @@
 <p><code>Student={this.state.info_1}</code>就是给子组件 添加一个名为<code>Student</code>的 Props 属性，这个属性又指向了父组件<code>ParentCom</code> 的 state <code>info_1=HEAD</code> ，意味着现在子组件<code>ChildCom</code> 有了一个值为<code>HEAD</code> 的 Props 属性。</p>
 <p>在<code>ChildCom</code> 组件中，</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="keyword">this</span>.props.Stutend&#125;</span><br></pre></td></tr></table></figure>
-<p> 就将 ’HEAD‘ 渲染子组件中，在父组件调用子组件时，一起被渲染</p>
-<h3 id="2-将-lt-input-gt-的输入传到-state-中"><a href="#2-将-lt-input-gt-的输入传到-state-中" class="headerlink" title="2. 将&lt;input /&gt; 的输入传到 state 中"></a>2. 将<code>&lt;input /&gt;</code> 的输入传到 state 中</h3><p>未完待续</p>
+<p> 就将 ’HEAD‘ 添加到子组件中，在父组件调用子组件时，一起被渲染</p>
+<h3 id="2-将-lt-input-gt-的输入传到-state-中"><a href="#2-将-lt-input-gt-的输入传到-state-中" class="headerlink" title="2. 将&lt;input /&gt; 的输入传到 state 中"></a>2. 将<code>&lt;input /&gt;</code> 的输入传到 state 中</h3><p>在最上面的<code>ChildCom</code> 组件中，我们其实是把 State 中的 参数放到了  <code>&lt;input /&gt;</code> 中，所以三个输入框的值是不可变的，接下来我们用一个函数，解决三个输入框的输入问题，先看看效果</p>
+<p><img src="pic_2.gif" alt=""></p>
 
       
     </div>
