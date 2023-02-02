@@ -49,7 +49,7 @@ $$
 4. 左闭 left = middle + 1
 5. 右闭 right = right - 1
    
-## 写法二，左闭右开
+### 写法二，左闭右开
 
 左闭右开，left<right
 ```

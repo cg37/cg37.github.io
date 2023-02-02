@@ -3,7 +3,7 @@
 # --------------------------------------
 
 menu:
-  # Home: / || fas fa-home
+   Home: / || fas fa-home
   # Archives: /archives/ || fas fa-archive
   # Tags: /tags/ || fas fa-tags
   # Categories: /categories/ || fas fa-folder-open
@@ -21,7 +21,7 @@ nav:
 # Code Blocks (代碼相關)
 # --------------------------------------
 
-highlight_theme: light #  darker / pale night / light / ocean / mac / mac light / false
+highlight_theme: mac # light #  darker / pale night / light / ocean / mac / mac light / false
 highlight_copy: true # copy button
 highlight_lang: true # show the code language
 highlight_shrink: false # true: shrink the code blocks / false: expand the code blocks | none: expand code blocks and hide the button
@@ -40,11 +40,11 @@ copy:
 # formal:
 #   icon: link || the description
 social:
-  # fab fa-github: https://github.com/xxxxx || Github
-  # fas fa-envelope: mailto:xxxxxx@gmail.com || Email
+  # fab fa-github: https://github.com/cg37 || Github
+  # fas fa-envelope: 37.G.Chan@gmail.com || Email
 
-# search (搜索)
-# see https://butterfly.js.org/posts/ceeb73f/#搜索系統
+ search (搜索)
+ see https://butterfly.js.org/posts/ceeb73f/#搜索系統
 # --------------------------------------
 
 # Algolia search
