@@ -1,13 +1,16 @@
 ---
-title: day1 数组(二分查找 & 移除元素)
+title: day1 数组
 date: 2023-02-01 19:07:36
 tags:
 ---
+# 数组
 
-Carl的代码训练营第一天，leetcode704.二分查找; 27.移除元素。
+Carl的代码训练营第一天，二分查找和移除元素
+- [704_二分查找](https://leetcode.cn/problems/binary-search/) 
+- [27_移除元素](https://leetcode.cn/problems/remove-element/)
 
 ***
-# leetcode 704 二分法查找算法
+# 704_二分法查找算法
 共两种写法，左闭友闭+左闭右开。
 - [题目链接](https://leetcode.cn/problems/binary-search/)
 - [文章讲解](https://programmercarl.com/0704.%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.html)
@@ -16,7 +19,7 @@ Carl的代码训练营第一天，leetcode704.二分查找; 27.移除元素。
 ## 写法一，左闭友闭
 
 左闭友闭写法, left<=right,
-
+```cpp
     class Solution {
         public:
         int search(vector<int>& nums, int target) {
@@ -38,8 +41,7 @@ Carl的代码训练营第一天，leetcode704.二分查找; 27.移除元素。
         }
     }; 
 
-
-***
+```
 1. left 初始化为0
 2. 闭区间，right = nums.size() - 1;
 3.
@@ -52,7 +54,7 @@ $$
 ## 写法二，左闭右开
 
 左闭右开，left<right
-```
+```cpp
 class Solution {
 public:
     int search(vector<int>& nums, int target) {
@@ -77,11 +79,11 @@ public:
 1. 开区间，[a,b), right = nums.size();
 2. 开区间，right = middle;
 
-# LeetCode27 移除元素
+# 27_移除元素
 - [题目链接](https://leetcode.cn/problems/remove-element/)
 - [文章讲解](https://programmercarl.com/0027.%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0.html)
 ## 暴力实现
-```
+```cpp
 class Solution {
 public:
     int removeElement(vector<int>& nums, int val) {
@@ -102,7 +104,7 @@ public:
 没什么好说的，记住就行
 ***
 ## 双指针法
-```
+```cpp
 class Solution {
 public:
     int removeElement(vector<int>& nums, int val) {
