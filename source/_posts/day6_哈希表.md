@@ -8,7 +8,8 @@ tags: 算法 Hash LeetCode
 carl的训练营第六天，哈希表，包括题目
 - [242_有效的字母异位词](https://leetcode.cn/problems/valid-anagram/submissions/)
 - [349_两个数组的交集](https://leetcode.cn/problems/intersection-of-two-arrays/)
-- [快乐数](https://leetcode.cn/problems/happy-number/submissions/)
+- [202快乐数](https://leetcode.cn/problems/happy-number/submissions/)
+- [1两数之和](https://leetcode.cn/problems/two-sum/)
 
 哈希表算我接触的最早的算法题了
 
