@@ -3,7 +3,7 @@ title: day1 数组
 date: 2023-02-01 19:07:36
 tags:
 ---
-# 数组
+# day1_数组
 
 Carl的代码训练营第一天，二分查找和移除元素
 - [704_二分查找](https://leetcode.cn/problems/binary-search/) 
@@ -12,7 +12,7 @@ Carl的代码训练营第一天，二分查找和移除元素
 ***
 # 704_二分法查找算法
 共两种写法，左闭友闭+左闭右开。
-- [题目链接](https://leetcode.cn/problems/binary-search/)
+
 - [文章讲解](https://programmercarl.com/0704.%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.html)
 - [视频讲解](https://www.bilibili.com/video/BV1fA4y1o715)
 
@@ -25,7 +25,7 @@ Carl的代码训练营第一天，二分查找和移除元素
         int search(vector<int>& nums, int target) {
             int left = 0;                                   //1
             int right = num.size() - 1;                     //2
-            while (left = right) {
+            while (left <= right) {
                 int middle = left + ((right - left) / 2)    // 3
                 if (nums[middle] < target) {
                     left = middle + 1;                      //4
@@ -80,8 +80,8 @@ public:
 2. 开区间，right = middle;
 
 # 27_移除元素
-- [题目链接](https://leetcode.cn/problems/remove-element/)
-- [文章讲解](https://programmercarl.com/0027.%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0.html)
+
+[文章讲解](https://programmercarl.com/0027.%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0.html)
 ## 暴力实现
 ```cpp
 class Solution {
@@ -102,7 +102,7 @@ public:
 };
 ```
 没什么好说的，记住就行
-***
+
 ## 双指针法
 ```cpp
 class Solution {
