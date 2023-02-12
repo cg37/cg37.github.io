@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"cg37.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="哈希表carl的训练营第六天，哈希表，包括题目  242_有效的字母异位词 349_两个数组的交集 202快乐数 1两数之和  哈希表算我接触的最早的算法题了 遇到需要判断一个元素是否出现在集合里的时候，就考虑用哈希法 理论基础 242_有效的字母异位词文章讲解 本题算是我为数不多的可以闭着眼睛直接做出来的题目，直接上代码 1234567891011121314151617181920212223">
+<meta property="og:type" content="article">
+<meta property="og:title" content="哈希表II">
+<meta property="og:url" content="https://cg37.github.io/2023/02/06/Day6_%E7%AC%AC%E4%B8%89%E7%AB%A0_%E5%93%88%E5%B8%8C%E8%A1%A8/index.html">
+<meta property="og:site_name" content="Craig37">
+<meta property="og:description" content="哈希表carl的训练营第六天，哈希表，包括题目  242_有效的字母异位词 349_两个数组的交集 202快乐数 1两数之和  哈希表算我接触的最早的算法题了 遇到需要判断一个元素是否出现在集合里的时候，就考虑用哈希法 理论基础 242_有效的字母异位词文章讲解 本题算是我为数不多的可以闭着眼睛直接做出来的题目，直接上代码 1234567891011121314151617181920212223">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-02-06T07:08:49.000Z">
+<meta property="article:modified_time" content="2023-02-12T13:56:01.806Z">
+<meta property="article:author" content="Craig">
+<meta property="article:tag" content="Hash">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://cg37.github.io/2023/02/06/Day6_%E7%AC%AC%E4%B8%89%E7%AB%A0_%E5%93%88%E5%B8%8C%E8%A1%A8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>哈希表II | Craig37</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Craig37</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://cg37.github.io/2023/02/06/Day6_%E7%AC%AC%E4%B8%89%E7%AB%A0_%E5%93%88%E5%B8%8C%E8%A1%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Craig">
+      <meta itemprop="description" content="光荣在于平淡，艰巨在于漫长">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Craig37">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          哈希表II
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2023-02-06 15:08:49" itemprop="dateCreated datePublished" datetime="2023-02-06T15:08:49+08:00">2023-02-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-02-12 21:56:01" itemprop="dateModified" datetime="2023-02-12T21:56:01+08:00">2023-02-12</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h1><p>carl的训练营第六天，哈希表，包括题目</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/valid-anagram/submissions/">242_有效的字母异位词</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/intersection-of-two-arrays/">349_两个数组的交集</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/happy-number/submissions/">202快乐数</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/two-sum/">1两数之和</a></li>
+</ul>
+<p>哈希表算我接触的最早的算法题了</p>
+<p>遇到需要判断一个元素是否出现在集合里的时候，就考虑用哈希法</p>
+<p><a target="_blank" rel="noopener" href="https://programmercarl.com/%E5%93%88%E5%B8%8C%E8%A1%A8%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80.html">理论基础</a></p>
+<h1 id="242-有效的字母异位词"><a href="#242-有效的字母异位词" class="headerlink" title="242_有效的字母异位词"></a>242_有效的字母异位词</h1><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0242.%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D.html">文章讲解</a></p>
+<p>本题算是我为数不多的可以闭着眼睛直接做出来的题目，直接上代码</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isAnagram</span><span class="params">(string s, string t)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> len_s = s.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> <span class="type">len_t</span> = t.<span class="built_in">size</span>();</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">record</span><span class="params">(<span class="number">26</span>,<span class="number">0</span>)</span></span>;</span><br><span class="line">        <span class="keyword">if</span> (len_s != <span class="type">len_t</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; len_s; i++) &#123;</span><br><span class="line">            record[s[i] - <span class="string">&#x27;a&#x27;</span>]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="type">len_t</span>; i++) &#123;</span><br><span class="line">            record[t[s] - <span class="string">&#x27;a&#x27;</span>]--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">26</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (record[i] != <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="349-两个数组的交集"><a href="#349-两个数组的交集" class="headerlink" title="349_两个数组的交集"></a>349_两个数组的交集</h1><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0349.%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86.html#_349-%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86">文章讲解</a></p>
+<h2 id="unordered-set-解法"><a href="#unordered-set-解法" class="headerlink" title="unordered_set 解法"></a>unordered_set 解法</h2><p>没有限制数值的大小，无法使用数组来做哈希表，使用set</p>
+<p>C++提供三种可用的数据结构</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">std::set</span><br><span class="line">std::multiset</span><br><span class="line">std::unoedered_set</span><br></pre></td></tr></table></figure>
+<p><code>std::set</code> 和<code>std::multiset</code> 的底层实现是红黑树，<br><code>std::unordered_set</code> 底层实现是哈希表，使用<code>unordered_set</code> 读写效率最高，并不需要对数据进行排序，</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">intersection</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums1, vector&lt;<span class="type">int</span>&gt;&amp; nums2)</span> </span>&#123;</span><br><span class="line">        unordered_set&lt;<span class="type">int</span>&gt; ans_set;</span><br><span class="line">        <span class="function">unordered_set&lt;<span class="type">int</span>&gt; <span class="title">nums1_set</span><span class="params">(nums1.begin(),nums.end())</span></span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt;nums2.<span class="built_in">size</span>(), i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(nums1_set.<span class="built_in">find</span>(nums2[i]) != nums1_set.<span class="built_in">end</span>())</span><br><span class="line">            ans_set.<span class="built_in">insert</span>(nums2[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">ans</span><span class="params">(ans_set.begin(),ans_set.end())</span></span></span><br><span class="line"><span class="function">        <span class="keyword">return</span> ans </span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><code>nums1_set.find(nums2[i]) != nums1_set.end()</code> 在<code>nums1_set</code>中找到了和<code>nums2[i]</code>相同的元素且在<code>nums1_set</code>中</p>
+<h2 id="数组解法"><a href="#数组解法" class="headerlink" title="数组解法"></a>数组解法</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">intersection</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums1, vector&lt;<span class="type">int</span>&gt;&amp; nums2)</span> </span>&#123;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">record</span><span class="params">(<span class="number">1001</span>)</span></span>;</span><br><span class="line">        unordered_set&lt;<span class="type">int</span>&gt; ans;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i &lt; nums1.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            record[nums1[i]] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i &lt; nums2.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(record[nums2[i]]==<span class="number">1</span>) &#123;</span><br><span class="line">                ans.<span class="built_in">insert</span>(nums2[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(ans.<span class="built_in">begin</span>(),ans.<span class="built_in">end</span>());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="202-快乐数"><a href="#202-快乐数" class="headerlink" title="202_快乐数"></a>202_快乐数</h1><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0202.%E5%BF%AB%E4%B9%90%E6%95%B0.html">文章讲解</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getsum</span><span class="params">(<span class="type">int</span> n)</span></span>&#123;</span><br><span class="line">        <span class="type">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(n) &#123;</span><br><span class="line">            sum = sum + (n % <span class="number">10</span>)*(n % <span class="number">10</span>);</span><br><span class="line">            n = n / <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isHappy</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">        unordered_set&lt;<span class="type">int</span>&gt; sum_set;</span><br><span class="line">        <span class="type">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(<span class="number">1</span>) &#123;</span><br><span class="line">            sum = <span class="built_in">getsum</span>(n);</span><br><span class="line">            <span class="keyword">if</span>(sum == <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125; </span><br><span class="line">            <span class="keyword">if</span>(sum_set.<span class="built_in">find</span>(sum) != set_sum.<span class="built_in">end</span>()) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                sumset.<span class="built_in">insert</span>(sum);</span><br><span class="line">            &#125;</span><br><span class="line">            n = sum;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>如果sum重复出现，就return false;<br>否则一直找到sum&#x3D;&#x3D;1为止;<br>判断sum是否重复出现就用unordered_set;</p>
+<h1 id="1-两数之和"><a href="#1-两数之和" class="headerlink" title="1_两数之和"></a>1_两数之和</h1><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0001.%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C.html#_1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C">文章讲解</a></p>
+<h2 id="经典的暴力解法"><a href="#经典的暴力解法" class="headerlink" title="经典的暴力解法"></a>经典的暴力解法</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">twoSum</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; ans;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i&lt;nums.<span class="built_in">size</span>()<span class="number">-1</span>;i++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = i+<span class="number">1</span>; j&lt;nums.<span class="built_in">size</span>();j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[i]+nums[j]==target) &#123;</span><br><span class="line">                    ans.<span class="built_in">push_back</span>(i);</span><br><span class="line">                    ans.<span class="built_in">push_back</span>(j);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>那叫写地一个得心应手</p>
+<h2 id="哈希法"><a href="#哈希法" class="headerlink" title="哈希法"></a>哈希法</h2><p>需要存放两个元素，数值和下表，用map；<br>数值作为key；快速查找key，数值是否出现过，<br>下标作为value;<br>C++中有三种map</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">std::map</span><br><span class="line">std::unordered_map</span><br><span class="line">std::multi_map</span><br></pre></td></tr></table></figure>
+<p><code>map</code>和<code>multi_map</code> 底层实现是红黑树; key有序<br><code>unordered_map</code>底层实现是哈希结构,key无序，直接做映射。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">twoSum</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; twoSum_map;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i&lt;nums.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            vector&lt;<span class="type">int</span>&gt; ans;</span><br><span class="line">            <span class="type">int</span> s = target - nums[i];</span><br><span class="line">            <span class="keyword">auto</span> iter = twoSum_map.<span class="built_in">find</span>(s);</span><br><span class="line">            <span class="keyword">if</span>(iter != twoSum_map.<span class="built_in">end</span>()) &#123;</span><br><span class="line">                ans.<span class="built_in">push_back</span>(i);</span><br><span class="line">                ans.<span class="built_in">push_back</span>(iter-&gt;second);</span><br><span class="line">                <span class="keyword">return</span> ans;</span><br><span class="line">            &#125;</span><br><span class="line">            twoSum_map.<span class="built_in">insert</span>(<span class="built_in">pair</span>&lt;<span class="type">int</span>,<span class="type">int</span>&gt;(nums[i],i));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>map-&gt;fitst &#x3D; key;</li>
+<li>map-&gt;second &#x3D; value;</li>
+<li>要将遍历过的key value值放入map中以进行后面的查询；</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Hash/" rel="tag"># Hash</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/02/06/Day5_%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93/" rel="prev" title="day5休息一天 总结">
+      <i class="fa fa-chevron-left"></i> day5休息一天 总结
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/02/07/Day7_%E7%AC%AC%E4%B8%89%E7%AB%A0_%E5%93%88%E5%B8%8C%E8%A1%A8/" rel="next" title="哈希表I">
+      哈希表I <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="nav-number">1.</span> <span class="nav-text">哈希表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#242-%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D"><span class="nav-number">2.</span> <span class="nav-text">242_有效的字母异位词</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#349-%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86"><span class="nav-number">3.</span> <span class="nav-text">349_两个数组的交集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#unordered-set-%E8%A7%A3%E6%B3%95"><span class="nav-number">3.1.</span> <span class="nav-text">unordered_set 解法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E8%A7%A3%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">数组解法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#202-%E5%BF%AB%E4%B9%90%E6%95%B0"><span class="nav-number">4.</span> <span class="nav-text">202_快乐数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C"><span class="nav-number">5.</span> <span class="nav-text">1_两数之和</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E7%9A%84%E6%9A%B4%E5%8A%9B%E8%A7%A3%E6%B3%95"><span class="nav-number">5.1.</span> <span class="nav-text">经典的暴力解法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E6%B3%95"><span class="nav-number">5.2.</span> <span class="nav-text">哈希法</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Craig</p>
+  <div class="site-description" itemprop="description">光荣在于平淡，艰巨在于漫长</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Craig</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
