@@ -1,11 +1,11 @@
 ---
-title: Day 4 链表
+title: 链表II
 date: 2023-02-04 22:26:06
 tags:
 ---
 # 24 两两交换链表中的节点
 
-```
+```cpp
 class Solution {
 public:
     ListNode* swapPairs(ListNode* head) {

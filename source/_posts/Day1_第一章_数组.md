@@ -1,5 +1,5 @@
 ---
-title: day1 数组
+title: 数组
 date: 2023-02-01 19:07:36
 tags:
 ---
