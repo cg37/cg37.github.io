@@ -8,22 +8,20 @@ tags:
 - LeetCode
 categories:
 - 随想录训练营
-description: Carl的代码训练营第一天，二分查找和移除元素
+excerpt: 栈与队列,20_有效的括号,1027_删除字符串中多有相邻的重复项,150_逆波兰表达式求值。
 ---
-# 数组I
-
 Carl的代码训练营第一天，二分查找和移除元素
 - [704_二分查找](https://leetcode.cn/problems/binary-search/) 
 - [27_移除元素](https://leetcode.cn/problems/remove-element/)
 
 ***
-# 704_二分法查找算法
+## 704_二分法查找算法
 共两种写法，左闭友闭+左闭右开。
 
 - [文章讲解](https://programmercarl.com/0704.%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.html)
 - [视频讲解](https://www.bilibili.com/video/BV1fA4y1o715)
 
-## 写法一，左闭友闭
+### 写法一，左闭友闭
 
 左闭友闭写法, left<=right,
 ```cpp
@@ -58,7 +56,7 @@ $$
 4. 左闭 left = middle + 1
 5. 右闭 right = right - 1
    
-## 写法二，左闭右开
+### 写法二，左闭右开
 
 左闭右开，left<right
 ```cpp
@@ -86,7 +84,7 @@ public:
 1. 开区间，[a,b), right = nums.size();
 2. 开区间，right = middle;
 
-# 27_移除元素
+## 27_移除元素
 
 [文章讲解](https://programmercarl.com/0027.%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0.html)
 ## 暴力实现
@@ -110,7 +108,7 @@ public:
 ```
 没什么好说的，记住就行
 
-## 双指针法
+### 双指针法
 ```cpp
 class Solution {
 public:

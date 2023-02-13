@@ -162,7 +162,7 @@ public:
 数值作为key；快速查找key，数值是否出现过，
 下标作为value;
 C++中有三种map
-```
+```cpp
 std::map
 std::unordered_map
 std::multi_map
