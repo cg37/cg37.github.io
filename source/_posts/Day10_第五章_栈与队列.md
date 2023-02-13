@@ -1,7 +1,12 @@
 ---
 title: 栈与队列I
+author: Craig
 date: 2023-02-10 16:26:35
-tags: 
+tags:  
+- 栈
+- 队列
+categories:
+- 随想录训练营
 ---
 # Day10_第五章_栈与队列
 [232_用栈实现队列](https://leetcode.cn/problems/implement-queue-using-stacks/)

@@ -1,7 +1,11 @@
 ---
 title: 链表II
+author: Craig
 date: 2023-02-04 22:26:06
-tags:
+tags: 
+- 链表
+categories:
+- 随想录训练营
 ---
 # 24 两两交换链表中的节点
 

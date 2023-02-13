@@ -1,7 +1,11 @@
 ---
-title: day8_第四章_字符串
+title: 字符串I
+author: Craig
 date: 2023-02-08 15:37:57
-tags:
+tags: 
+- 字符串
+categories:
+- 随想录训练营
 ---
 # day8_字符串
 - [344_反转字符串](https://leetcode.cn/problems/reverse-string/submissions/)

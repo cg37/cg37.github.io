@@ -1,9 +1,16 @@
 ---
-title: 数组
+title: 数组I
+author: Craig
 date: 2023-02-01 19:07:36
-tags:
+tags: 
+- 二分法
+- 数组
+- LeetCode
+categories:
+- 随想录训练营
+description: Carl的代码训练营第一天，二分查找和移除元素
 ---
-# day1_数组
+# 数组I
 
 Carl的代码训练营第一天，二分查找和移除元素
 - [704_二分查找](https://leetcode.cn/problems/binary-search/) 

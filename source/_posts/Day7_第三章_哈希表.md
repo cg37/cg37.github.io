@@ -1,7 +1,11 @@
 ---
-title: day7_哈希表
+title: 哈希表I
+author: Craig
 date: 2023-02-07 15:49:10
-tags:
+tags: 
+- Hash
+categories:
+- 随想录训练营
 ---
 # 哈希表
 代码训练营day6，有以下题目

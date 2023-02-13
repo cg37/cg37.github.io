@@ -1,7 +1,14 @@
 ---
 title: 栈与队列II
+author: Craig
 date: 2023-02-11 2:07:36
-tags:
+tags: 
+- 栈
+- 队列
+- 逆波兰表达式
+categories:
+- 随想录训练营
+excerpt: 栈与队列,20_有效的括号,1027_删除字符串中多有相邻的重复项,150_逆波兰表达式求值。
 ---
 # day11_第五章_栈与队列
 [20_有效的括号](https://leetcode.cn/problems/valid-parentheses/)
@@ -110,7 +117,9 @@ public:
 
 重点对这句解析一下
 
-    ```if(tokens[i]=="/") st.push(num2/num1);```
+    ```cpp
+    if(tokens[i]=="/") st.push(num2/num1);
+    ```
 
 入栈队列为`82/`,则表达式为`8/2`, 出栈时`num2 = 8`, `num1 = 2`;
 所以`st.push(num2/num1)`

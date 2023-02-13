@@ -1,7 +1,11 @@
 ---
 title: 链表I
+author: Craig
 date: 2023-02-03 18:36:51
-tags:
+tags: 
+- 链表
+categories:
+- 随想录训练营
 ---
 第一次接触链表，写的很挣扎
 # Leetcode203.移除链表元素

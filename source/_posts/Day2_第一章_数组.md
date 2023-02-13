@@ -1,7 +1,13 @@
 ---
 title: 数组II
+author: Craig
 date: 2023-02-02 17:05:40
-tags: leetcode 
+tags: 
+- 数组
+- LeetCode
+categories:
+- 随想录训练营
+description: Carl的代码训练营第二天，有序数组的平方
 ---
 977 有序数组的平方
 

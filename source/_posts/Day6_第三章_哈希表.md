@@ -1,7 +1,11 @@
 ---
-title: day6_哈希表
+title: 哈希表II
+author: Craig
 date: 2023-02-06 15:08:49
-tags: 算法 Hash LeetCode
+tags: 
+- Hash
+categories:
+- 随想录训练营
 ---
 
 # 哈希表
