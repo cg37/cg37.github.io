@@ -16,24 +16,23 @@
   <meta name="author" content="Craig">
   <meta name="keywords" content="">
   
-    <meta name="description" content="很久前写的一篇前端入门，现在已经看不懂了;">
+    <meta name="description" content="随想录训练营第13天">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前端学习札记_1">
-<meta property="og:url" content="https://cg37.github.io/2018/06/23/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E6%9C%AD%E8%AE%B0/index.html">
+<meta property="og:title" content="栈与队列III">
+<meta property="og:url" content="https://cg37.github.io/2023/02/13/Day13_%E7%AC%AC%E4%BA%94%E7%AB%A0_%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97/index.html">
 <meta property="og:site_name" content="Craig37">
-<meta property="og:description" content="很久前写的一篇前端入门，现在已经看不懂了;">
+<meta property="og:description" content="随想录训练营第13天">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2018-06-23T13:14:56.000Z">
-<meta property="article:modified_time" content="2023-02-13T15:51:27.316Z">
+<meta property="article:published_time" content="2023-02-13T14:57:49.000Z">
+<meta property="article:modified_time" content="2023-02-13T15:49:35.666Z">
 <meta property="article:author" content="Craig">
-<meta property="article:tag" content="React">
-<meta property="article:tag" content="前端">
-<meta property="article:tag" content="JS">
+<meta property="article:tag" content="栈">
+<meta property="article:tag" content="队列">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>前端学习札记_1_Craig37</title>
+  <title>栈与队列III_Craig37</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -175,7 +174,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle">前端学习札记_1</span>
+            <span id="subtitle">栈与队列III</span>
           
         </div>
 
@@ -186,8 +185,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2018-06-23 21:14" pubdate>
-          2018年6月23日 晚上
+        <time datetime="2023-02-13 22:57" pubdate>
+          2023年2月13日 晚上
         </time>
       </span>
     
@@ -198,7 +197,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.1k 字
+          1.6k 字
         
       </span>
     
@@ -238,203 +237,16 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">前端学习札记_1</h1>
+            <h1 style="display: none">栈与队列III</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="React-父子组件传值、input，onChange-中的问题"><a href="#React-父子组件传值、input，onChange-中的问题" class="headerlink" title="React 父子组件传值、input，onChange 中的问题"></a>React 父子组件传值、input，onChange 中的问题</h1><h3 id="1-先看最简单React-父子组件传值"><a href="#1-先看最简单React-父子组件传值" class="headerlink" title="1.先看最简单React 父子组件传值"></a>1.先看最简单React 父子组件传值</h3><pre><code class="hljs">import React, &#123; Component &#125; from &#39;react&#39;
-
-class ChildCom extends Component&#123;
-    constructor(props)&#123;
-        super(props);
-        this.state=&#123;
-            state_1:&#39;name&#39;,
-            state_2:&#39;gender&#39;,
-            state_3:&#39;age&#39;,
-        &#125;
-    &#125;
-render()&#123;
-    return(
-    &lt;div&gt;
-        &#123;this.props.Student&#125;
-        &lt;br/&gt;
-        &lt;input  value=&#123;this.state.state_1&#125; /&gt;
-        &lt;br/&gt;
-        &lt;input  value=&#123;this.state.state_2&#125; /&gt;
-        &lt;br/&gt;
-        &lt;input  value=&#123;this.state.state_3&#125; /&gt;
-        &lt;br/&gt;
-    &lt;/div&gt;
-        )
-    &#125;    
-&#125;
-class ParentCom extends Component&#123;
-    constructor(props)&#123;
-        super(props);
-        this.state=&#123;
-            info_1:&#39;Head&#39;,
-        &#125;
-    &#125;
-    render()&#123;
-        return(
-            &lt;div&gt;
-                &lt;ChildCom Student=&#123;this.state.info_1&#125; /&gt;
-                &lt;button onClick=&#123;this.handleSubmit&#125;&gt;submit&lt;/button&gt;
-            &lt;/div&gt;
-        )
-    &#125;
-&#125;
-export default ParentCom
-</code></pre>
-<p>上面是最简单的 React 父组件向子组件传值， 我们来看一下效果</p>
-<p>子组件<code>ChildCom</code> 在父组件 <code>ParentCom</code> 中渲染， <code>ParentCom</code> 中定义 state <code>info_1=‘HEAD&#39;</code> 在渲染 子组件 <code>ChildCom</code> 时：</p>
-<pre><code class="hljs">&lt;ChildCom Student=&#123;this.state.info_1&#125; /&gt;
-</code></pre>
-<p><code>Student=&#123;this.state.info_1&#125;</code>就是给子组件 添加一个名为<code>Student</code>的 Props 属性，这个属性又指向了父组件<code>ParentCom</code> 的 state <code>info_1=HEAD</code> ，意味着现在子组件<code>ChildCom</code> 有了一个值为<code>HEAD</code> 的 Props 属性。</p>
-<p>在<code>ChildCom</code> 组件中，</p>
-<pre><code class="hljs">&#123;this.props.Stutend&#125;
-</code></pre>
-<p>就将 ’HEAD‘ 添加到子组件中，在父组件调用子组件时，一起被渲染</p>
-<h3 id="2-将-lt-input-gt-的输入传到-state-中"><a href="#2-将-lt-input-gt-的输入传到-state-中" class="headerlink" title="2. 将&lt;input /&gt; 的输入传到 state 中"></a>2. 将<code>&lt;input /&gt;</code> 的输入传到 state 中</h3><p>在最上面的<code>ChildCom</code> 组件中，我们其实是把 State 中的 参数放到了 <code>&lt;input /&gt;</code> 中，所以三个输入框的值是不可变的，接下来我们用一个函数，解决三个输入框的输入问题，先看看效果</p>
-<p></p>
-<p>将 <code>&lt;input /&gt; </code> 输入的值绑定到state中，这里我们在三个输入框中绑定同一个 <code>onChange</code> 函数，每一个 输入框绑定一个需要他传入到的<code>state</code> 名</p>
-<pre><code class="hljs">import React, &#123; Component &#125; from &#39;react&#39;
-
-class ChildCom extends Component&#123;
-    constructor(props)&#123;
-        super(props);
-        this.state=&#123;
-            state_1:&#39;name&#39;,
-            state_2:&#39;gender&#39;,
-            state_3:&#39;age&#39;,
-        &#125;
-        this.handleChange=this.handleChange.bind(this)
-    &#125;
-    handleChange=(e)=&gt;&#123;
-        this.setState(&#123;[e.target.name]:e.target.value&#125;)
-    &#125;
-    handleClick=()=&gt;&#123;
-        console.log(this.state)
-    &#125;
-render()&#123;
-    return(
-    &lt;div&gt;
-        &#123;this.props.Student&#125;
-        &lt;br/&gt;
-        &lt;input  value=&#123;this.state.state_1&#125; 
-                onChange=&#123;this.handleChange&#125;
-                name=&#39;state_1&#39;/&gt;
-        &lt;br/&gt;
-        &lt;input  value=&#123;this.state.state_2&#125; 
-                onChange=&#123;this.handleChange&#125;
-                name=&#39;state_2&#39;/&gt;
-        &lt;br/&gt;
-        &lt;input  value=&#123;this.state.state_3&#125; 
-                onChange=&#123;this.handleChange&#125;
-                name=&#39;state_3&#39;/&gt;
-        &lt;br/&gt;
-        &lt;button onClick=&#123;this.handleClick&#125;&gt;log state&lt;/button&gt;
-    &lt;/div&gt;
-    )&#125;    
-&#125;
-export default ChildCom
-</code></pre>
-<p><code>handleChange</code> 函数用来把和输入框绑定的<code>state</code> 改为当前的输入状态，我们添加一个log state 按钮来显示<code>ChildCom</code> 的 <code>state</code> ，打开控制台，点击<code>log state </code> 来看看效果</p>
-<p></p>
-<p>可以看到在输入的值已经传到了 <code>ChildCom</code> 的 <code>state</code> 中</p>
-<h3 id="3-将子组件的state传到父组件的state中"><a href="#3-将子组件的state传到父组件的state中" class="headerlink" title="3. 将子组件的state传到父组件的state中"></a>3. 将子组件的state传到父组件的state中</h3><p>子组件给父组件传值就有点复杂了，我们现在父组件添加一个Button， 按下Button 触发函数打印当前父组件 state 的值，来检验传值有没有成功。</p>
-<p>在父组件中添加一个函数，这个函数接受一个参数并把这个参数传到父组件的state<code>infoget</code> 中。</p>
-<pre><code class="hljs">getinfo=(data)=&gt;&#123;
-        this.setState(&#123;infoget:data&#125;)
-    &#125;
-</code></pre>
-<p>给子组件添加一个Props，这个Props 是一个函数，并且指向父组件的<code>getinfo</code> 函数中。</p>
-<pre><code class="hljs">&lt;ChildCom getinfo=&#123;this.getinfo&#125; /&gt;
-</code></pre>
-<p>在子组件中的输入框中添加 <code>OnBlur=&#123;this.handleBlur&#125;</code> 属性，在<code>handleBlur </code> 中将子组件的<code>state</code> 当作参数传入到 Props <code>getinfo</code> 中，下面是<code>handleBlur</code>函数</p>
-<pre><code class="hljs">handleBlur=()=&gt;&#123;this.props.getinfo(this.state)&#125;
-</code></pre>
-<p>就是说，把子组件中的<code>state</code> 当作参数，传入到子组件的Props中的一个函数中，在父组件再回调这个函数，把收到的参数传到父组件的<code>state</code> 中，即完成了一次传值。</p>
-<p>看一下全部代码</p>
-<pre><code class="hljs">import React, &#123; Component &#125; from &#39;react&#39;
-
-class ChildCom extends Component&#123;
-    constructor(props)&#123;
-        super(props);
-        this.state=&#123;
-            state_1:&#39;name&#39;,
-            state_2:&#39;gender&#39;,
-            state_3:&#39;age&#39;,
-        &#125;
-        this.handleChange=this.handleChange.bind(this)
-        this.handleBlur=this.handleBlur.bind(this)
-        this.handleClick=this.handleClick.bind(this)
-    &#125;
-    handleChange=(e)=&gt;&#123;
-        this.setState(&#123;[e.target.name]:e.target.value&#125;)
-    &#125;
-    handleClick=()=&gt;&#123;
-        console.log(this.state)
-    &#125;
-    handleBlur=()=&gt;&#123;
-        this.props.getinfo(this.state)
-    &#125;
-render()&#123;
-    return(
-    &lt;div&gt;
-        &lt;br/&gt;
-         &#123;this.props.Student&#125;
-        &lt;br/&gt;
-         &lt;input  value=&#123;this.state.state_1&#125; 
-                onChange=&#123;this.handleChange&#125;
-                onBlur=&#123;this.handleBlur&#125;
-                name=&#39;state_1&#39;/&gt;
-        &lt;br/&gt;
-         &lt;input  value=&#123;this.state.state_2&#125; 
-                onChange=&#123;this.handleChange&#125;
-                onBlur=&#123;this.handleBlur&#125;
-                name=&#39;state_2&#39;/&gt;
-        &lt;br/&gt;
-         &lt;input  value=&#123;this.state.state_3&#125; 
-                onChange=&#123;this.handleChange&#125;
-                onBlur=&#123;this.handleBlur&#125;
-                name=&#39;state_3&#39;/&gt;
-        &lt;br/&gt;
-         &lt;button onClick=&#123;this.handleClick&#125;&gt;log state&lt;/button&gt;
-    &lt;/div&gt;
-    )&#125;    
-&#125;
-class ParentCom extends Component&#123;
-    constructor(props)&#123;
-        super(props);
-        this.state=&#123;
-            info_1:&#39;Head&#39;,
-        &#125;
-    &#125;
-    getinfo=(data)=&gt;&#123;
-        this.setState(&#123;infoget:data&#125;)
-    &#125;
-    handleSubmit=()=&gt;&#123;
-        console.log(this.state)
-    &#125;
-    render()&#123;
-        return(
-            &lt;div&gt;
-                &lt;ChildCom
-                        Student=&#123;this.state.info_1&#125; 
-                        getinfo=&#123;this.getinfo&#125; /&gt;
-                &#123;&lt;button onClick=&#123;this.handleSubmit&#125;&gt;submit&lt;/button&gt;&#125;
-            &lt;/div&gt;
-        )
-    &#125;
-&#125; 
-export default ParentCom
-</code></pre>
-<p>要实现子组件更新，父组件自动更新<code>state</code> , 之前把传值函数绑定到<code>onChange</code> 函数中，发现每一次更新时，会漏掉最后一位的输入，细细想了一下，<code>onChange</code> 确实有这个问题，就是说我在子组件输入‘123’，我在一次输入‘123‘，state只更新到了’12‘，’3‘要我输入下一位才能更新到 <code>state</code> 里面。看看这一次的效果</p>
-<p></p>
-<p>这个方法有个缺陷就是如果没有输入，或者没有点击一下输入框，父组件中<code>state</code>的值也是不会更新的，希望有人能提出更好的解决方案</p>
-
+                <h1 id="Day13-第五章-栈与队列"><a href="#Day13-第五章-栈与队列" class="headerlink" title="Day13_第五章_栈与队列"></a>Day13_第五章_栈与队列</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/sliding-window-maximum/">230_滑动窗口最大值</a><br><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/top-k-frequent-elements/">347_前K个高频元素</a><br>有点抽象，再多看看吧</p>
+<h1 id="239-滑动窗口最大值"><a href="#239-滑动窗口最大值" class="headerlink" title="239_滑动窗口最大值"></a>239_滑动窗口最大值</h1><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0239.%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E6%9C%80%E5%A4%A7%E5%80%BC.html">文章解析</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyQueue</span>&#123;<br>    <span class="hljs-keyword">public</span>:<br>        deque&lt;<span class="hljs-type">int</span>&gt; que;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">pop</span><span class="hljs-params">(<span class="hljs-type">int</span> value)</span> </span>&#123;<br>            <span class="hljs-keyword">if</span> (!que.<span class="hljs-built_in">empty</span>() &amp;&amp; value == que.<span class="hljs-built_in">front</span>()) &#123;<br>                que.<span class="hljs-built_in">pop_front</span>();<br>            &#125;<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">push</span><span class="hljs-params">(<span class="hljs-type">int</span> value)</span> </span>&#123;<br>            <span class="hljs-keyword">while</span>(!que.<span class="hljs-built_in">empty</span>() &amp;&amp; value &gt; que.<span class="hljs-built_in">back</span>()) &#123;<br>                que.<span class="hljs-built_in">pop_back</span>();<br>            &#125; <br>            que.<span class="hljs-built_in">push_back</span>(value);<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">front</span> <span class="hljs-params">()</span></span>&#123;<br>            <span class="hljs-keyword">return</span> que.<span class="hljs-built_in">front</span>();<br>        &#125;<br>    &#125;;<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">maxSlidingWindow</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> k)</span> </span>&#123;<br>        MyQueue que;<br>        vector&lt;<span class="hljs-type">int</span>&gt; ans;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i= <span class="hljs-number">0</span>; i &lt; k; i++) &#123;<br>            que.<span class="hljs-built_in">push_back</span>(nums[i]);<br>        &#125;<br>        ans.<span class="hljs-built_in">push</span>(que.<span class="hljs-built_in">front</span>());<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = k; i &lt; nums.<span class="hljs-built_in">size</span>(); i++) &#123;<br>            que.<span class="hljs-built_in">pop</span>(nums[i-k]);<br>            que.<span class="hljs-built_in">push</span>(nums[i]);<br>            ans.<span class="hljs-built_in">push_back</span>(que.<span class="hljs-built_in">front</span>());<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h1 id="247-前K个高频元素"><a href="#247-前K个高频元素" class="headerlink" title="247_前K个高频元素"></a>247_前K个高频元素</h1><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0347.%E5%89%8DK%E4%B8%AA%E9%AB%98%E9%A2%91%E5%85%83%E7%B4%A0.html">文章详解</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-keyword">class</span> <span class="hljs-title class_">mycomparison</span> &#123;<br>        <span class="hljs-keyword">public</span>:<br>            <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">operator</span><span class="hljs-params">()</span><span class="hljs-params">(<span class="hljs-type">const</span> pair&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt;&amp; lhs, <span class="hljs-type">const</span> pair&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt;&amp; rhs)</span> </span>&#123;<br>                <span class="hljs-keyword">return</span> lhs.second &gt; rhs.second;<br>            &#125;<br>    &#125;;<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">topKFrequent</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> k)</span> </span>&#123;<br>        unordered_map&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; map;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; nums.<span class="hljs-built_in">size</span>(); i++) &#123;<br>            map[nums[i]]++;<br>        &#125;<br>        priority_queue&lt;pair&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt;,vector&lt;pair&lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>&gt;&gt;,mycomparison&gt; pri_que;<br>        <span class="hljs-keyword">for</span>(unordered_map&lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>&gt;::iterator it = map.<span class="hljs-built_in">begin</span>(); it!=map.<span class="hljs-built_in">end</span>(); it++)&#123;<br>            pri_que.<span class="hljs-built_in">push</span>(*it);<br>            <span class="hljs-keyword">if</span>(pri_que.<span class="hljs-built_in">size</span>() &gt; k)&#123;<br>                pri_que.<span class="hljs-built_in">pop</span>();<br>            &#125;<br>        &#125;<br>        <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">ans</span><span class="hljs-params">(k)</span></span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = k<span class="hljs-number">-1</span>; i &gt;= <span class="hljs-number">0</span>; i--) &#123;<br>            ans[i] = pri_que.<span class="hljs-built_in">top</span>().first;<br>            pri_que.<span class="hljs-built_in">pop</span>();<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -442,15 +254,34 @@ export default ParentCom
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%9A%8F%E6%83%B3%E5%BD%95%E8%AE%AD%E7%BB%83%E8%90%A5/" class="category-chain-item">随想录训练营</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
   
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/React/">#React</a>
+        <a href="/tags/%E6%A0%88/">#栈</a>
       
-        <a href="/tags/%E5%89%8D%E7%AB%AF/">#前端</a>
-      
-        <a href="/tags/JS/">#JS</a>
+        <a href="/tags/%E9%98%9F%E5%88%97/">#队列</a>
       
     </div>
   
@@ -462,8 +293,8 @@ export default ParentCom
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>前端学习札记_1</div>
-      <div>https://cg37.github.io/2018/06/23/前端学习札记/</div>
+      <div>栈与队列III</div>
+      <div>https://cg37.github.io/2023/02/13/Day13_第五章_栈与队列/</div>
     </div>
     <div class="license-meta">
       
@@ -475,7 +306,7 @@ export default ParentCom
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2018年6月23日</div>
+          <div>2023年2月13日</div>
         </div>
       
       
@@ -507,15 +338,15 @@ export default ParentCom
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/01/31/%E5%85%B3%E4%BA%8E%E8%BF%87%E5%8E%BB%E5%9B%9B%E5%B9%B4%E7%9A%84%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/" title="2023.2.1, 关于过去四年的生活总结">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2023.2.1, 关于过去四年的生活总结</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2023/02/11/Day11_%E7%AC%AC%E4%BA%94%E7%AB%A0_%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97/" title="栈与队列II">
+                        <span class="hidden-mobile">栈与队列II</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
