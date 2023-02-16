@@ -8,9 +8,9 @@ tags:
 - LeetCode
 categories:
 - 随想录训练营
-excerpt: 栈与队列,20_有效的括号,1027_删除字符串中多有相邻的重复项,150_逆波兰表达式求值。
+excerpt: 704_二分查找，27_移除元素
 ---
-Carl的代码训练营第一天，二分查找和移除元素
+代码随想录训练营第一天，二分查找和移除元素
 - [704_二分查找](https://leetcode.cn/problems/binary-search/) 
 - [27_移除元素](https://leetcode.cn/problems/remove-element/)
 
@@ -18,12 +18,11 @@ Carl的代码训练营第一天，二分查找和移除元素
 ## 704_二分法查找算法
 共两种写法，左闭友闭+左闭右开。
 
-- [文章讲解](https://programmercarl.com/0704.%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.html)
-- [视频讲解](https://www.bilibili.com/video/BV1fA4y1o715)
+[文章讲解](https://programmercarl.com/0704.%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.html)
 
-### 写法一，左闭友闭
+### 写法一，左闭右闭
 
-左闭友闭写法, left<=right,
+左闭友闭写法, `left<=right`.
 ```cpp
     class Solution {
         public:
@@ -48,17 +47,19 @@ Carl的代码训练营第一天，二分查找和移除元素
 
 ```
 1. left 初始化为0
-2. 闭区间，right = nums.size() - 1;
+2. 闭区间，`right = nums.size() - 1`;
 3.
 $$
     \frac{left+right}{2} == left + \frac{right-left}{2}
 $$
-4. 左闭 left = middle + 1
-5. 右闭 right = right - 1
+防止 `int` 溢出
+
+4. 左闭 `left = middle + 1`
+5. 右闭 `right = right - 1`
    
 ### 写法二，左闭右开
 
-左闭右开，left<right
+左闭右开，`left<right`.
 ```cpp
 class Solution {
 public:
@@ -67,11 +68,11 @@ public:
         int right = nums.right                      //1
         while (left < right) {
             int middle = left + (right - left) / 2;
-            if (nums[middle]>target) {
+            if (nums[middle] > target) {
                 right = middle;                     //2
             }
             else if(nums[middle] < target) {
-                left = middle +1;
+                left = middle + 1;
             }
             else {
                 return middle;
@@ -81,8 +82,8 @@ public:
     }
 };
 ```
-1. 开区间，[a,b), right = nums.size();
-2. 开区间，right = middle;
+1. 开区间，`[a, b)`, `right = nums.size()`;
+2. 开区间，`right = middle`;
 
 ## 27_移除元素
 
@@ -125,4 +126,6 @@ public:
     }
 };
 ```
-一定记得要初始化slow和fast！！！
+- 一定记得要初始化`slow`和`fast`！！！
+- `fast`快指针, `slow` 慢指针;
+- 快慢指针同时开始移动

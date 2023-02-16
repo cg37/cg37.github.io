@@ -3,5 +3,5 @@ title: {{ title }}
 date: {{ date }}
 tags:
 excerpt: 
-antuor: 
+author: Craig
 ---
