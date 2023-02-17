@@ -1,48 +1,68 @@
 ---
-title: day15_第六章二叉树
-date: 2023-02-16 23:20:22
+title: day15-第六章二叉树
+author: Craig
+date: 2023-02-17 17:24:12
 tags:
 excerpt:
-author:
 ---
-- [102_二叉树的层序遍历](https://leetcode.cn/problems/binary-tree-level-order-traversal/)
-- [107_二叉树的层次遍历II]()
-- [199_二叉树的右视图]()
-- [637_二叉树的层平均值]()
-- [429_N叉树的层序遍历]()
-- [515_在每个树行中找最大值]()
-- [116_填充每个节点的下一个右侧节点指针]()
-- [117_填充每个节点的下一个右侧节点指针II]()
-- [104_二叉树的最大深度]()
-- [111_二叉树的最小深度]()
-***
-## 102_二叉树的层序遍历
-层序遍历，就是从左到右，一层一层去遍历二叉树，
-
-需要借用一个辅助数据结构队列来实现，**队列先进先出，符合一层一层便利的逻辑**，用栈进行先进后出适合模拟深度优先搜索遍历也就是递归的逻辑
-
-**层序遍历就是图论中的广度优先遍历**
-
-层序遍历的模板:
+- [226_反转二叉树](https://leetcode.cn/problems/invert-binary-tree/)
+- [101_对称二叉树](https://leetcode.cn/problems/symmetric-tree/)
+  
+## 226_反转二叉树
+[文章讲解](https://programmercarl.com/0226.%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91.html#%E9%80%92%E5%BD%92%E6%B3%95)
+### 递归法
 ```cpp
-class Solution{
+class Solution {
 public:
-    vector<vector<int>> levelOrder(TreeNode* root) {
-        queue<TreeNode*> que;
-        if(root != NULL) que.push(root);
-        vector<vector<int>> res;
-        while(!que.empty()) {
-            int size = que.size();
-            vector<int> vec;
-            for (int i = 0; i < size; i++) {
-                TreeNode* node = que.front();
-                que.pop();
-                vec.push_back(node->val);
-                if (node->left) que.push(node->left);
-                if (node->right) que.push(node->right);
-            }
-            res.push_back(vec);
-        }
-        return res;
+    TreeNode* invertTree(TreeNode* root) {
+        if(root == NULL) return root;
+        swap(root->left, root->right);
+        invertTree(root->left);
+        invertTree(root->right);
+        return root;
     }
-}
+};
+```
+### 迭代法 前序遍历
+```cpp
+class Solution {
+public:
+    TreeNode* invertTree(TreeNode* root) {
+        if(root == NULL) return root;
+        stack<TreeNode*> st;
+        st.push(root);
+        while(!st.empty()) {
+            TreeNode* node = st.top();
+            st.pop();
+            swap(node->left, node->right);
+            if(node->right) st.push(node->right);
+            if(node->left) st.push(node->left);
+        }
+        return root;
+    }
+};
+```
+
+## 101_对称二叉树
+[文章讲解](https://programmercarl.com/0101.%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91.html#%E9%80%92%E5%BD%92%E6%B3%95)
+```cpp
+class Solution {
+public:
+    bool isSymmetric(TreeNode* root) {
+        if(root == NULL) return true;
+        return compare(root->left, root->right);
+    }
+private:
+    bool compare(TreeNode* left, TreeNode* right) {
+        if(left == NULL && right != NULL) return false;
+        else if(left !=NULL && right == NULL) return false;
+        else if(left == NULL && right == NULL) return true;
+        else if(left->val != right->val) return false;
+
+        bool outside = compare(left->left, right->right);
+        bool inside = compare(left->right, right->left);
+        bool issame = outside && inside;
+        return issame;
+    }
+};
+```
